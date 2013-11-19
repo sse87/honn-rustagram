@@ -3,7 +3,7 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-@main(title = "Login", nav = "login") {
+@main(title = "Home", nav = "index") {
     @helper.form(action = routes.Images.processImageForm) {
         <fieldset>
             <legend>Image details</legend>
@@ -19,7 +19,7 @@
         </fieldset>
 
         <div class="actions">
-            <input type="submit" class="btn primary" value="Login">
+            <input type="submit" class="btn primary" value="Upload">
             <a href="@routes.Application.index" class="btn">Cancel</a>
         </div>
     }

@@ -14,6 +14,7 @@ import views.html.index;
 import views.html.json;
 import views.html.login;
 import views.html.signup_success;
+import views.html.upload_success;
 
 import java.util.List;
 
@@ -38,10 +39,10 @@ public class Images extends AbstractRustagramController {
     public static Result processImageForm(){
         Form<Image> filledForm = imageForm.bindFromRequest();
         RustagramService service = (RustagramService) ctx.getBean("service");
-        Image img = filledForm.get();
 
-        Image image = service.createImage(session().get("username"),"imgurl","description");
 
-        return ok(index.render());
+        Image image = service.createImage(session().get("username"),filledForm.field("imgurl").value(), filledForm.field("description").value());
+
+        return ok(upload_success.render(image));
     }
 }

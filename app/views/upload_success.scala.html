@@ -1,0 +1,7 @@
+@(Image: is.ru.honn.rustagram.domain.Image)
+@main(title = "Home", nav = "index") {
+    <h2>Upload successful!</h2>
+    <p>Uploader: @Image.getCreatorUsername()</p>
+    <p>Image: @Image.getUrl()</p>
+    <p>Description: @Image.getDescription</p>
+}
