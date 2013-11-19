@@ -16,17 +16,16 @@
             @inputText(
                 signupForm("username"),
                 '_label -> "Username",
-                '_help -> "Please enter your desired username.",
+                '_help -> "Please enter your desired username. Must be at least 3 characters",
                 '_error -> signupForm.globalError
             )
             @inputPassword(
                 signupForm("password"),
                 '_label -> "Password",
-            '_help -> "Password must be at least 4 characters.",
-            '_error -> signupForm.globalError
+                '_help -> "Password must be at least 4 characters."
             )
             @inputPassword(
-                signupForm("password"),
+                signupForm("repeatPassword"),
                 '_label -> "Password again",
                 '_help -> "Please enter your password again.",
                 '_error -> signupForm.globalError
