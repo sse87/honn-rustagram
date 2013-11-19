@@ -2,6 +2,7 @@
 @main(title = "Home", nav = "index") {
     <h2>Upload successful!</h2>
     <p>Uploader: @Image.getCreatorUsername()</p>
-    <p>Image: @Image.getUrl()</p>
+    <li> <img src="@{Image.getUrl}" /></li>
     <p>Description: @Image.getDescription</p>
+    <p>Created: @Image.getCreated</p>
 }
