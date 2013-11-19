@@ -31,6 +31,10 @@ public class Users extends AbstractRustagramController {
         Form<UserRegistration> filledForm = SignupForm.bindFromRequest();
         User created = filledForm.get();
         System.out.println(created);
+
+        RustagramService service = (RustagramService) ctx.getBean("service");
+        User user = service.userSignup(created);
+
         return ok(signup_success.render());
     }
 

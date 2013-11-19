@@ -58,6 +58,16 @@ public class RustagramServiceStub implements RustagramService {
   }
 
   @Override
+  public User userSignup(User newUser) throws UsernameExistsException {
+    if (users.containsKey(newUser.getUsername())) {
+      throw new UsernameExistsException("A user with this username already exists.");
+    }
+    newUser.setId(users.size());
+    users.put(newUser.getUsername(), newUser);
+    return newUser;
+  }
+
+  @Override
   public User getUser(String username) throws UserNotFoundException {
     if (!users.containsKey(username)) {
       throw new UserNotFoundException("No user with that username was found.");

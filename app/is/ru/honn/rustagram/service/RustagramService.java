@@ -15,19 +15,29 @@ public interface RustagramService {
   /**
    * Signup a new user.
    *
-   * @param username    the requested username.
-   * @param password    the requested password.
-   * @param displayName the display name.
-   * @param email       the provided email address.
-   * @param gender      the gender
+   * @param newUser    the user with all attributes.
    *
    * @return  the User instance that was created.
    *
    * @throws UsernameExistsException  if the requested username already exists.
    */
-  public User userSignup(String username, String password, String displayName,
-                         String email, Gender gender)
+  public User userSignup(User newUser)
       throws UsernameExistsException;
+
+    /**
+     * Signup a new user.
+     *
+     * @param username    the requested username.
+     * @param password    the requested password.
+     * @param displayName the display name.
+     * @param email       the provided email address.
+     * @param gender      the gender
+     * @return the User instance that was created.
+     * @throws UsernameExistsException if the requested username already exists.
+     */
+    public User userSignup(String username, String password, String displayName,
+                           String email, Gender gender)
+            throws UsernameExistsException;
 
   /**
    * Retrieve a user with the specified username.

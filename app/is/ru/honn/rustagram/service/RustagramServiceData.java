@@ -51,6 +51,13 @@ public class RustagramServiceData implements RustagramService {
   }
 
   @Override
+  public User userSignup(User newUser) {
+    int id = userDataGateway.addUser(newUser);
+    newUser.setId(id);
+    return newUser;
+  }
+
+  @Override
   public User getUser(String username) throws UserNotFoundException {
     User user = userDataGateway.getUserByUsername(username);
     if( user == null ){
