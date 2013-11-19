@@ -1,1 +1,42 @@
-TODO: implement
+@(signupForm: Form[is.ru.honn.rustagram.domain.UserRegistration])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main(title = "Signup", nav = "signup") {
+    @helper.form(action = routes.Users.processSignupForm) {
+        <fieldset>
+            <legend>Signup details</legend>
+            @inputText(
+                signupForm("Name"),
+                '_label -> "Your name"
+            )
+            @inputText(
+                signupForm("username"),
+                '_label -> "Username",
+                '_error -> signupForm.globalError
+            )
+            @inputPassword(
+                signupForm("password"),
+                '_label -> "Password"
+            )
+            @inputPassword(
+                signupForm("Password"),
+                '_label -> "Password again"
+            )
+            @inputText(
+                signupForm("email"),
+                '_label -> "Email"
+            )
+            @inputText(
+                signupForm("gender"),
+                '_label -> "Gender"
+            )
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Login">
+            <a href="@routes.Application.index" class="btn">Cancel</a>
+        </div>
+    }
+}

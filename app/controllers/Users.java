@@ -1,7 +1,7 @@
 package controllers;
 
 import is.ru.honn.rustagram.domain.User;
-//import is.ru.honn.rustagram.domain.UserRegistration;
+import is.ru.honn.rustagram.domain.UserRegistration;
 import is.ru.honn.rustagram.service.RustagramService;
 
 import is.ru.honn.rustagram.service.UserNotFoundException;
@@ -20,13 +20,18 @@ import views.html.signup_success;
 public class Users extends AbstractRustagramController {
 
     final static Form<User> loginForm = form(User.class);
+    final static Form<UserRegistration> SignupForm = form(UserRegistration.class);
 
     public static Result showSignupForm(){
-        return ok(index.render()); //TODO: implement
+        return ok(signup.render(SignupForm));
     }
 
     public static Result processSignupForm(){
-	return ok(index.render()); //TODO: implement
+
+        Form<UserRegistration> filledForm = SignupForm.bindFromRequest();
+        User created = filledForm.get();
+        System.out.println(created);
+        return ok(signup_success.render());
     }
 
     public static Result showLoginForm(){
