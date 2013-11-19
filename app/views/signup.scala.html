@@ -8,7 +8,7 @@
         <fieldset>
             <legend>Signup details</legend>
             @inputText(
-                signupForm("Name"),
+                signupForm("displayName"),
                 '_label -> "Your name",
                 '_help -> "Please enter your name.",
                 '_error -> signupForm.globalError
@@ -26,7 +26,7 @@
             '_error -> signupForm.globalError
             )
             @inputPassword(
-                signupForm("Password"),
+                signupForm("password"),
                 '_label -> "Password again",
                 '_help -> "Please enter your password again.",
                 '_error -> signupForm.globalError

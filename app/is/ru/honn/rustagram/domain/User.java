@@ -11,8 +11,8 @@ public class User {
   private String password;
   private String displayName;
   private String email;
-  private Gender gender;
-  private Date registered;
+  private Gender gender = Gender.UNSPECIFIED;;
+  private Date registered =  new Date();
 
   public User(){}
 
@@ -22,8 +22,8 @@ public class User {
     this.password = password;
     this.displayName = displayName;
     this.email = email;
-    this.gender = gender;
-    this.registered = registered;
+    this.gender = Gender.UNSPECIFIED;
+    this.registered = new Date();
   }
 
   public User(String username, String password, String displayName, String email, Gender gender) {
@@ -31,7 +31,8 @@ public class User {
     this.password = password;
     this.displayName = displayName;
     this.email = email;
-    this.gender = gender;
+    this.gender = Gender.UNSPECIFIED;
+    this.registered = new Date();
   }
 
   public int getId() {
