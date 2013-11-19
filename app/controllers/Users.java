@@ -3,6 +3,7 @@ package controllers;
 import is.ru.honn.rustagram.domain.User;
 import is.ru.honn.rustagram.domain.UserRegistration;
 import is.ru.honn.rustagram.service.RustagramService;
+import is.ru.honn.rustagram.data.UserData;
 
 import is.ru.honn.rustagram.service.UserNotFoundException;
 import is.ru.honn.rustagram.service.UsernameExistsException;
@@ -27,15 +28,47 @@ public class Users extends AbstractRustagramController {
     }
 
     public static Result processSignupForm(){
-
         Form<UserRegistration> filledForm = SignupForm.bindFromRequest();
-        User created = filledForm.get();
-        System.out.println(created);
-
         RustagramService service = (RustagramService) ctx.getBean("service");
-        User user = service.userSignup(created);
 
-        return ok(signup_success.render(user));
+        User user = null;
+        try {
+            user = service.getUser(filledForm.field("username").value());
+        }
+        catch (UserNotFoundException ex) {}
+
+        if (user != null);
+        {
+            filledForm.reject("username", "This username is taken, please choose another one");
+        }
+
+        if (filledForm.field("username").value().length () < 3)
+        {
+            filledForm.reject("username", "Username must be at least 3 characters");
+        }
+
+        if (!filledForm.field("password").value().equals(filledForm.field("repeatPassword").value()))
+        {
+            filledForm.reject("repeatPassword", "Password does not match");
+        }
+
+        if (filledForm.field("password").value().length() < 4)
+        {
+            filledForm.reject("password", "Password too short");
+        }
+        if (filledForm.hasErrors())
+        {
+            return badRequest(signup.render(filledForm));
+        }
+        else{
+
+            User created = filledForm.get();
+            System.out.println(created);
+
+            user = service.userSignup(created);
+
+            return ok(signup_success.render(user));
+        }
     }
 
     public static Result showLoginForm(){
