@@ -16,8 +16,8 @@
                     <a class="brand" href="@routes.Application.index()">@title</a>
                     <ul class="nav">
                         @if(session.get("username")) {
-                            <li>
-                                <a href="TODO">Add Image</a>
+                            <li class="@("active".when(nav == "addimage"))">
+                                <a href="@routes.Images.showImageForm()">Add Image</a>
                             </li>
                             <li>
                                 <a href="@routes.Users.logout()">Logout</a>

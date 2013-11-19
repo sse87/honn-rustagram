@@ -1,0 +1,26 @@
+@(signupForm: Form[is.ru.honn.rustagram.domain.Image])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main(title = "Login", nav = "login") {
+    @helper.form(action = routes.Images.processImageForm) {
+        <fieldset>
+            <legend>Image details</legend>
+            @inputText(
+                signupForm("imgurl"),
+                '_label -> "Image URL",
+                '_error -> signupForm.globalError
+            )
+            @inputText(
+                signupForm("description"),
+                '_label -> "Description"
+            )
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Login">
+            <a href="@routes.Application.index" class="btn">Cancel</a>
+        </div>
+    }
+}

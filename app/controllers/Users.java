@@ -1,5 +1,6 @@
 package controllers;
 
+import is.ru.honn.rustagram.domain.Image;
 import is.ru.honn.rustagram.domain.User;
 import is.ru.honn.rustagram.domain.UserRegistration;
 import is.ru.honn.rustagram.service.RustagramService;
