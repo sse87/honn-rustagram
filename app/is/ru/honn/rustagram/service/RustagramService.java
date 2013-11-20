@@ -1,9 +1,6 @@
 package is.ru.honn.rustagram.service;
 
-import is.ru.honn.rustagram.domain.Comment;
-import is.ru.honn.rustagram.domain.Gender;
-import is.ru.honn.rustagram.domain.Image;
-import is.ru.honn.rustagram.domain.User;
+import is.ru.honn.rustagram.domain.*;
 
 import java.util.List;
 
@@ -111,4 +108,8 @@ public interface RustagramService {
      * @throws ImageNotFoundException if no image with the specified ID was found.
      */
     public List<Comment> getCommentsOnImage(int imageId) throws ImageNotFoundException;
+
+    Like addLikeOnImage(int imageId, User User) throws ImageNotFoundException;
+
+    int getLikesOnImage(int imageId) throws ImageNotFoundException;
 }

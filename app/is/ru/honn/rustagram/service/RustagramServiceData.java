@@ -3,10 +3,7 @@ package is.ru.honn.rustagram.service;
 import is.ru.honn.rustagram.data.CommentDataGateway;
 import is.ru.honn.rustagram.data.ImageDataGateway;
 import is.ru.honn.rustagram.data.UserDataGateway;
-import is.ru.honn.rustagram.domain.Comment;
-import is.ru.honn.rustagram.domain.Gender;
-import is.ru.honn.rustagram.domain.Image;
-import is.ru.honn.rustagram.domain.User;
+import is.ru.honn.rustagram.domain.*;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -98,4 +95,14 @@ public class RustagramServiceData implements RustagramService {
   public List<Comment> getCommentsOnImage(int imageId) throws ImageNotFoundException {
     return commentDataGateway.getCommentsOnImage(imageId);
   }
+
+    @Override
+    public Like addLikeOnImage(int imageId, User User) throws ImageNotFoundException {
+        return null;  //TODO
+    }
+
+    @Override
+    public int getLikesOnImage(int imageId) throws ImageNotFoundException {
+        return 0;  //TODO
+    }
 }
