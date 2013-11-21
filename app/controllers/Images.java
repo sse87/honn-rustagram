@@ -11,12 +11,13 @@ import static play.data.Form.form;
 
 import views.html.*;
 import views.html.index;
-import views.html.json;
 import views.html.login;
 import views.html.signup_success;
 import views.html.upload_success;
 
 import java.util.List;
+
+import static play.libs.Json.toJson;
 
 public class Images extends AbstractRustagramController {
 
@@ -25,11 +26,10 @@ public class Images extends AbstractRustagramController {
     public static Result getAllImages() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");
-        //List<Image> images = service.getImages();
 
+        List<Image> images = service.getAllImages();
 
-
-        return ok(views.html.json.render("test"));
+        return ok(toJson(images));
     }
 
     public static Result showImageForm(){

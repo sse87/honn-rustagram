@@ -5,6 +5,8 @@
 # Home page
 GET         /                    controllers.Application.index()
 
+GET         /index               controllers.Application.index()
+
 GET         /login               controllers.Users.showLoginForm()
 POST        /login               controllers.Users.processLoginForm()
 GET         /logout              controllers.Users.logout()
@@ -12,7 +14,8 @@ GET         /logout              controllers.Users.logout()
 GET         /signup              controllers.Users.showSignupForm()
 POST        /signup              controllers.Users.processSignupForm()
 
-GET         /images              controllers.Images.getAllImages()
+GET         /api/images          controllers.Images.getAllImages()
+GET         /api/feeds           controllers.Application.getFeeds()
 
 GET         /image/form          controllers.Images.showImageForm()
 POST        /image               controllers.Images.processImageForm()

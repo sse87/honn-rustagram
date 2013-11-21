@@ -1,6 +1,6 @@
 package is.ru.honn.rustagram.domain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 

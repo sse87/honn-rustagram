@@ -3,10 +3,7 @@ package is.ru.honn.rustagram.service;
 import is.ru.honn.rustagram.data.CommentDataGateway;
 import is.ru.honn.rustagram.data.ImageDataGateway;
 import is.ru.honn.rustagram.data.UserDataGateway;
-import is.ru.honn.rustagram.domain.Comment;
-import is.ru.honn.rustagram.domain.Gender;
-import is.ru.honn.rustagram.domain.Image;
-import is.ru.honn.rustagram.domain.User;
+import is.ru.honn.rustagram.domain.*;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -72,6 +69,11 @@ public class RustagramServiceData implements RustagramService {
     int id = imageDataGateway.addImage(image); // This can throw a UserNotFoundException
     image.setId(id);
     return image;
+  }
+
+  @Override
+  public List<Image> getAllImages() throws ImageNotFoundException {
+    return imageDataGateway.getAllImages();
   }
 
   @Override

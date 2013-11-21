@@ -1,3 +1,4 @@
+@(feedList: List[is.ru.honn.rustagram.domain.Feed])
 @import play.api.Play.current
 
 @main(title = "Welcome") {
@@ -7,6 +8,11 @@
     @if(session.get("username")) {
 
         <h3>Good to see you again @{session.get("displayName")}!</h3>
+
+        @for(feed <- feedList) {
+
+            <p>@feed.getId()</p>
+        }
 
     } else {
 

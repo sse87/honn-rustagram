@@ -1,9 +1,6 @@
 package is.ru.honn.rustagram.service;
 
-import is.ru.honn.rustagram.domain.Comment;
-import is.ru.honn.rustagram.domain.Gender;
-import is.ru.honn.rustagram.domain.Image;
-import is.ru.honn.rustagram.domain.User;
+import is.ru.honn.rustagram.domain.*;
 
 import java.util.*;
 import java.util.logging.Level;
@@ -88,6 +85,19 @@ public class RustagramServiceStub implements RustagramService {
     image.setId(images.size());
     images.put(image.getId(), image);
     return image;
+  }
+
+  @Override
+  public List<Image> getAllImages() throws ImageNotFoundException {
+    // Create a list to hold the results
+    List<Image> results = new ArrayList<Image>();
+
+    // Now loop through everything and collect images that match this user.
+    // This is a bad implementation, but does the job for a Service Stub.
+    for (Image image : images.values()) {
+      results.add(image);
+    }
+    return results;
   }
 
   @Override

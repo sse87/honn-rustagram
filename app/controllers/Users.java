@@ -101,11 +101,11 @@ public class Users extends AbstractRustagramController {
             return badRequest(login.render(filledForm));
         }
 
-        return ok(index.render());
+        return redirect("index");
     }
 
     public static Result logout(){
         session().clear();
-        return ok(index.render());
+        return redirect("index");
     }
 }
