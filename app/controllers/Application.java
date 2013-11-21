@@ -41,6 +41,22 @@ public class Application extends AbstractRustagramController {
         return ok(index.render(feeds));
     }
 
+    public static Result AddComment() {
+
+        RustagramService service = (RustagramService) ctx.getBean("service");
+
+        //System.out.println("request: " + request().body().get("comment"));
+
+        /*
+        String username = form().bindFromRequest().get("username");
+        int imageId = Integer.parseInt(form().bindFromRequest().get("imageId"));
+        String comment = form().bindFromRequest().get("comment");
+
+        service.addCommentOnImage(username, imageId, comment);
+        */
+        return ok(toJson("works"));
+    }
+
     public static Result getFeeds() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");

@@ -30,19 +30,23 @@
 
 #imageFeed .feed .likes {}
 
-#imageFeed .feed .comments {
+.comments {
     border-top: 1px solid #000000;
 }
 
-#imageFeed .feed .comments .comment {
+.comments .comment {
     border-bottom: 1px solid #000000;
     padding: 10px;
 }
 
-#imageFeed .feed .comments .comment .commenter {
+.comments .comment .commenter {
     font-style: italic;
 }
 
-#imageFeed .feed .comments .comment .theComment {}
+.comments .comment .theComment {}
 
+#addComment {
+    margin: 20px 10px;
+    width: 790px;
+}
 
