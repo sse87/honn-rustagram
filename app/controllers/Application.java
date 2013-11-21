@@ -16,14 +16,21 @@ import java.util.ArrayList;
 
 import static play.libs.Json.toJson;
 
+/**
+ * Application controller
+ */
 public class Application extends AbstractRustagramController {
 
+    /**
+     * Renders the front page for our application.
+     * @return Returns feeds to the index view with status code 200 OK.
+     */
     public static Result index() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");
-
+        // Creates a list of all images that have been uploaded on to Rustagram.
         java.util.List<Image> images = service.getAllImages();
-
+        // Creates a list of feeds we would like to use
         java.util.List<Feed> feeds = new ArrayList<Feed>();
         for (Image image : images) {
 
@@ -41,6 +48,10 @@ public class Application extends AbstractRustagramController {
         return ok(index.render(feeds));
     }
 
+    /**
+     *
+     * @return
+     */
     public static Result AddComment() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");
@@ -57,6 +68,10 @@ public class Application extends AbstractRustagramController {
         return ok(toJson("works"));
     }
 
+    /**
+     * Renders the front page for our application.
+     * @return Returns feeds to Json with status code 200 OK.
+     */
     public static Result getFeeds() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");

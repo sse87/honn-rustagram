@@ -3,6 +3,9 @@ package is.ru.honn.rustagram.domain;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * A feed for an Image object
+ */
 public class Feed extends Image
 {
     protected String creatorDisplayName;

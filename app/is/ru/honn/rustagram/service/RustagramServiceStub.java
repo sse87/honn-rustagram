@@ -144,6 +144,13 @@ public class RustagramServiceStub implements RustagramService {
     return c;
   }
 
+    /**
+     * Adds a like on the image being displayed.
+     * @param imageId The id of the chosen image
+     * @param User The user logged in.
+     * @return Returns a like.
+     * @throws ImageNotFoundException
+     */
   @Override
   public Like addLikeOnImage(int imageId, User User) throws ImageNotFoundException {
     Image image = getImage(imageId);
@@ -160,12 +167,24 @@ public class RustagramServiceStub implements RustagramService {
     return like;
   }
 
+    /**
+     * Gets how many likes are on the chosen image
+     * @param imageId id of the image
+     * @return returns how many likes the image has as an integer
+     * @throws ImageNotFoundException
+     */
   @Override
   public int getLikesOnImage(int imageId) throws ImageNotFoundException {
      Image image = getImage(imageId); // To verify that the image exists. Will throw exception otherwise.
      return likes.size();
     }
 
+    /**
+     * Gets all comments of the image with the selected id.
+     * @param imageId  the ID of the image
+     * @return returns a list of all comments on the current image
+     * @throws ImageNotFoundException
+     */
   @Override
   public List<Comment> getCommentsOnImage(int imageId) throws ImageNotFoundException {
     Image image = getImage(imageId); // To verify that the image exists. Will throw exception otherwise.

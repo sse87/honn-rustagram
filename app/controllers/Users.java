@@ -19,15 +19,29 @@ import views.html.login;
 import views.html.signup;
 import views.html.signup_success;
 
+/**
+ * A controller for user login and signup.
+ */
 public class Users extends AbstractRustagramController {
 
+    //The form needed to be filled out to login.
     final static Form<User> loginForm = form(User.class);
+    //The form needed to be filled out to signup.
     final static Form<UserRegistration> SignupForm = form(UserRegistration.class);
 
+    /**
+     * Displays the SignupForm so the user can put in his information.
+     * @return Returns the form to the signup view with status code 200 OK.
+     */
     public static Result showSignupForm(){
         return ok(signup.render(SignupForm));
     }
 
+    /**
+     * The process of reading the signupForm and creating the user if everything seems to be in order.
+     * @return Returns the newly created user signup_success view with status code 200 OK.
+     * If the form was not filled out correcly it rejects the form and returns back to the signupForm with helpful error messages.
+     */
     public static Result processSignupForm(){
         Form<UserRegistration> filledForm = SignupForm.bindFromRequest();
         RustagramService service = (RustagramService) ctx.getBean("service");
@@ -72,10 +86,19 @@ public class Users extends AbstractRustagramController {
         }
     }
 
+    /**
+     * Displays the loginForm so the user can login.
+     * @return Returns the form to the login view with status code 200 OK.
+     */
     public static Result showLoginForm(){
         return ok(login.render(loginForm));
     }
 
+    /**
+     * The process of reading the loginForm and loging in  the user if everything seems to be in order.
+     * @return Returns the loged in user to his frontpage.
+     * If the form was not filled out correcly it rejects the form and returns back to the loginForm with helpful error messages.
+     */
     public static Result processLoginForm(){
         Form<User> filledForm = loginForm.bindFromRequest();
 
@@ -104,6 +127,10 @@ public class Users extends AbstractRustagramController {
         return redirect("index");
     }
 
+    /**
+     * Loges out the user.
+     * @return Returns to the front page with no user loged in.
+     */
     public static Result logout(){
         session().clear();
         return redirect("index");
