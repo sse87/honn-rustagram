@@ -17,5 +17,7 @@ GET         /images              controllers.Images.getAllImages()
 GET         /image/form          controllers.Images.showImageForm()
 POST        /image               controllers.Images.processImageForm()
 
+GET         /imageinfo           controllers.Images.showImageInfo()
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

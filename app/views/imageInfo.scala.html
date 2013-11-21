@@ -1,10 +1,12 @@
 @(Image: is.ru.honn.rustagram.domain.Image, RustagramService: is.ru.honn.rustagram.service.RustagramService)
+
 @main(title = "Home", nav = "index") {
-    <h2>Upload successful!</h2>
-    <p>Uploader: @Image.getCreatorUsername()</p>
+    <h2>Uploader: @Image.getCreatorUsername()</h2>
     <li> <img src="@{Image.getUrl}" /></li>
     <p>Description: @Image.getDescription</p>
-    <p><a href="@{RustagramService.addLikeOnImage(Image.getId, RustagramService.getUser(Image.getCreatorUsername))}"></a></p>
+
     <p>Likes: @RustagramService.getLikesOnImage(Image.getId)</p>
+    <p><a class="btn" href="@{RustagramService.addLikeOnImage(Image.getId, RustagramService.getUser("einar"))}">Like</a></p>
+
     <p>Comments: @RustagramService.getCommentsOnImage(Image.getId)</p>
 }

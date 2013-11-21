@@ -137,7 +137,7 @@ public class RustagramServiceStub implements RustagramService {
     User user = User;
     Like like = new Like(user.getUsername() , imageId);
     if (likes.containsKey(user)) {
-          throw new UsernameExistsException("You have already liked that image.");
+          return like;
     }
     else{
         List<Like> likeList = new ArrayList<Like>();
