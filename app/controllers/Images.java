@@ -65,17 +65,13 @@ public class Images extends AbstractRustagramController {
         return ok(upload_success.render(image));
     }
 
-<<<<<<< HEAD
-    public static Result showImageInfo(String strId){
-
-=======
     /**
      * Displays the info for the image clicked on.
      * @param id Takes in a id for an image
      * @return Returns the feed for the image with the id taken in.
      */
-    public static Result showImageInfo(String id){
->>>>>>> 2cec7936a94738cc1612027695f343c94ca48919
+    public static Result showImageInfo(String strId){
+        
         RustagramService service = (RustagramService) ctx.getBean("service");
 
         int id = Integer.parseInt(strId);
