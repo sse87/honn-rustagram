@@ -52,7 +52,7 @@ public class Images extends AbstractRustagramController {
         int ID = Integer.parseInt(id);
         Feed feed = new Feed(service.getImage(ID));
         feed.setComments(service.getCommentsOnImage(ID));
-        return ok(imageInfo.render(feed, service));
+        return ok(imageInfo.render(feed));
     }
 
 }

@@ -1,12 +1,12 @@
-@(Feed: is.ru.honn.rustagram.domain.Feed, RustagramService: is.ru.honn.rustagram.service.RustagramService)
+@(Feed: is.ru.honn.rustagram.domain.Feed)
 
 @main(title = "Home", nav = "index") {
     <h2>Uploader: @Feed.getCreatorUsername()</h2>
     <li> <img src="@{Feed.getUrl}" /></li>
     <p>Description: @Feed.getDescription</p>
 
-    <p>Likes: @RustagramService.getLikesOnImage(Feed.getId)</p>
-    <p><a class="btn" href="@{RustagramService.addLikeOnImage(Feed.getId, RustagramService.getUser("einar"))}">Like</a></p>
+
+    <p><a class="btn" href="#">Like</a></p>
 
     @if(Feed.getComments() != null){
     @for(comment <- Feed.getComments()) {
@@ -18,4 +18,5 @@
     } else{
         <p>No comments yet</p>
     }
+    <input type="text" class="primary" placeholder="Your comment">
 }

@@ -8,6 +8,8 @@ import play.*;
 import play.mvc.*;
 
 import views.html.*;
+import views.html.imageInfo;
+import views.html.login;
 
 import java.util.List;
 import java.util.ArrayList;
