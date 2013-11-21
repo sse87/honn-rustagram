@@ -8,6 +8,15 @@
     <p>Likes: @RustagramService.getLikesOnImage(Feed.getId)</p>
     <p><a class="btn" href="@{RustagramService.addLikeOnImage(Feed.getId, RustagramService.getUser("einar"))}">Like</a></p>
 
+    @if(Feed.getComments() != null) {
+    @for(comment <- Feed.getComments()) {
+        <div class="comment">
+            <div class="commenter">@comment.getCreatorUsername()</div>
+            <div class="theComment">@comment.getComment()</div>
+        </div>
+    }
+    } else {
+        <p>No comments yet!</p>
+    }
 
-    <p>Comments: @RustagramService.getCommentsOnImage(Feed.getId)</p>
 }
