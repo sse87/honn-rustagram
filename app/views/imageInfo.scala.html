@@ -2,7 +2,7 @@
 
 @main(title = "Home", nav = "index") {
     <h2>Uploader: @Feed.getCreatorUsername()</h2>
-    <img src="@{Feed.getUrl}" alt="" rel="@Feed.getId()" />
+    <img src="@{Feed.getUrl}" alt="" />
     <p>Description: @Feed.getDescription</p>
     <p><a class="btn" href="#">Like</a></p>
 
@@ -18,5 +18,7 @@
         <p>No comments yet</p>
     }
     </div>
+    <input type="hidden" id="sessionUsername" value="@session().get("username")" />
+    <input type="hidden" id="imageId" value="@Feed.getId()" />
     <input type="text" class="primary" id="addComment" placeholder="Your comment">
 }

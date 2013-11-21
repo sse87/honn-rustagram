@@ -71,7 +71,7 @@ public class Images extends AbstractRustagramController {
      * @return Returns the feed for the image with the id taken in.
      */
     public static Result showImageInfo(String strId){
-        
+
         RustagramService service = (RustagramService) ctx.getBean("service");
 
         int id = Integer.parseInt(strId);

@@ -8,7 +8,8 @@ $(document).ready(function () {
         if (e.which == 13) {
             console.log("RETURN pressed!");
 
-            var imageId = $('img').attr('rel');
+            var sessionUsername = $('#sessionUsername').val();
+            var imageId = $('#imageId').val();
             var comment = $(this).val();
 
             console.log('imageId: ' + imageId + ' - comment: ' + comment);
@@ -16,7 +17,7 @@ $(document).ready(function () {
             $.ajax({
                 type: "POST",
                 url: "/comment",
-                data: { imageId: imageId, comment: comment },
+                data: { sessionUsername: sessionUsername, imageId: imageId, comment: comment },
                 dataType: "json"
             }).done(function (json) {
 
@@ -26,7 +27,7 @@ $(document).ready(function () {
             });
 
 
-            $('.comments').append('<div class="comment"><div class="commenter">asdf</div><div class="theComment">' + comment + '</div></div>');
+            $('.comments').append('<div class="comment"><div class="commenter">' + sessionUsername + '</div><div class="theComment">' + comment + '</div></div>');
             $(this).val("");
             console.log("ajax sent!");
 
