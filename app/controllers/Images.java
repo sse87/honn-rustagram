@@ -21,10 +21,18 @@ import java.util.List;
 
 import static play.libs.Json.toJson;
 
+/**
+ * Image controller
+ */
 public class Images extends AbstractRustagramController {
 
+    //Creates a form so the user can link images to Rustagram.
     final static Form<Image> imageForm = form(Image.class);
 
+    /**
+     * Makes a list with all the images in Rustagram.
+     * @return Returns the image list to toJson
+     */
     public static Result getAllImages() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");
@@ -34,10 +42,19 @@ public class Images extends AbstractRustagramController {
         return ok(toJson(images));
     }
 
+    /**
+     * Displays the imageForm
+     * @return Returns the form to the addimage view with status code 200 OK.
+     */
     public static Result showImageForm(){
         return ok(addimage.render(imageForm));
     }
 
+    /**
+     * Processes the filled out imageForm
+     * If the URL is not valid it will return a blank image.
+     * @return Returns the image uploaded to the upload_success view.
+     */
     public static Result processImageForm(){
         Form<Image> filledForm = imageForm.bindFromRequest();
         RustagramService service = (RustagramService) ctx.getBean("service");
@@ -48,8 +65,17 @@ public class Images extends AbstractRustagramController {
         return ok(upload_success.render(image));
     }
 
+<<<<<<< HEAD
     public static Result showImageInfo(String strId){
 
+=======
+    /**
+     * Displays the info for the image clicked on.
+     * @param id Takes in a id for an image
+     * @return Returns the feed for the image with the id taken in.
+     */
+    public static Result showImageInfo(String id){
+>>>>>>> 2cec7936a94738cc1612027695f343c94ca48919
         RustagramService service = (RustagramService) ctx.getBean("service");
 
         int id = Integer.parseInt(strId);

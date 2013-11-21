@@ -19,14 +19,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import static play.libs.Json.toJson;
 
+/**
+ * Application controller
+ */
 public class Application extends AbstractRustagramController {
 
+    /**
+     * Renders the front page for our application.
+     * @return Returns feeds to the index view with status code 200 OK.
+     */
     public static Result index() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");
-
+        // Creates a list of all images that have been uploaded on to Rustagram.
         java.util.List<Image> images = service.getAllImages();
-
+        // Creates a list of feeds we would like to use
         java.util.List<Feed> feeds = new ArrayList<Feed>();
         for (Image image : images) {
 
@@ -44,6 +51,10 @@ public class Application extends AbstractRustagramController {
         return ok(index.render(feeds));
     }
 
+    /**
+     *
+     * @return
+     */
     public static Result addComment() {
 
         //JsonNode json = request().body().asJson();
@@ -81,7 +92,6 @@ public class Application extends AbstractRustagramController {
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }*/
 
-
         /*for (String val : map) {
             System.out.println("request: " + val);
         }*/
@@ -96,6 +106,10 @@ public class Application extends AbstractRustagramController {
         return ok("asdf");
     }
 
+    /**
+     * Renders the front page for our application.
+     * @return Returns feeds to Json with status code 200 OK.
+     */
     public static Result getFeeds() {
 
         RustagramService service = (RustagramService) ctx.getBean("service");
