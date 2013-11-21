@@ -2,6 +2,7 @@ package controllers;
 
 import is.ru.honn.rustagram.domain.Feed;
 import is.ru.honn.rustagram.domain.Image;
+import is.ru.honn.rustagram.domain.Comment;
 import is.ru.honn.rustagram.service.RustagramService;
 
 import play.cache.Cache;
@@ -82,13 +83,24 @@ public class Images extends AbstractRustagramController {
         return ok(imageInfo.render(feed));
     }
 
-    public static Result getTotalLikes(String imageId) {
+    public static Result getAllComments(String strId) {
+
+        int imageId = Integer.parseInt(strId);
 
         RustagramService service = (RustagramService) ctx.getBean("service");
 
-        int id = Integer.parseInt(imageId);
+        List<Comment> comments = service.getCommentsOnImage(imageId);
 
-        int totalLikes = service.getLikesOnImage(id);
+        return ok(toJson(comments));
+    }
+
+    public static Result getTotalLikes(String strId) {
+
+        int imageId = Integer.parseInt(strId);
+
+        RustagramService service = (RustagramService) ctx.getBean("service");
+
+        int totalLikes = service.getLikesOnImage(imageId);
 
         return ok(toJson(totalLikes));
     }

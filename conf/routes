@@ -14,6 +14,7 @@ GET         /logout              controllers.Users.logout()
 GET         /signup              controllers.Users.showSignupForm()
 POST        /signup              controllers.Users.processSignupForm()
 
+GET         /api/comments/:id    controllers.Images.getAllComments(id: String)
 GET         /api/image/likes/:id controllers.Images.getTotalLikes(id: String)
 GET         /api/feeds           controllers.Application.getFeeds()
 

@@ -3,6 +3,18 @@ $(document).ready(function () {
 
     console.log("Document ready!");
 
+    if ($('#totalLikes').length > 0) {
+        // Ná í fjölda likes á myndinni
+        $.ajax({
+            type: "POST",
+            url: "/api/image/likes/" + $('#imageId').val(),
+        }).done(function (totalLikes) {
+            $('#totalLikes').html(totalLikes);
+        });
+    }
+
+
+
     $('input#addComment').keyup(function (e) {
 
         if (e.which == 13) {
@@ -14,7 +26,7 @@ $(document).ready(function () {
 
             console.log('imageId: ' + imageId + ' - comment: ' + comment);
 
-            $.ajax({
+            /*$.ajax({
                 type: "POST",
                 url: "/comment",
                 data: { sessionUsername: sessionUsername, imageId: imageId, comment: comment },
@@ -24,7 +36,7 @@ $(document).ready(function () {
                 console.log("ajax returned!");
                 console.log(json);
 
-            });
+            });*/
 
 
             $('.comments').append('<div class="comment"><div class="commenter">' + sessionUsername + '</div><div class="theComment">' + comment + '</div></div>');
