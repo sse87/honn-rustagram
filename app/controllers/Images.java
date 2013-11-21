@@ -1,5 +1,6 @@
 package controllers;
 
+import is.ru.honn.rustagram.domain.Feed;
 import is.ru.honn.rustagram.domain.Image;
 import is.ru.honn.rustagram.service.RustagramService;
 
@@ -10,6 +11,7 @@ import play.mvc.*;
 import static play.data.Form.form;
 
 import views.html.*;
+import views.html.imageInfo;
 import views.html.index;
 import views.html.login;
 import views.html.signup_success;
@@ -45,10 +47,11 @@ public class Images extends AbstractRustagramController {
 
         return ok(upload_success.render(image));
     }
-    public static Result showImageInfo(){
+    public static Result showImageInfo(String id){
         RustagramService service = (RustagramService) ctx.getBean("service");
-        Image img = service.getImage(1);
-        return ok(imageInfo.render(img, service));
+        int ID = Integer.parseInt(id);
+        Feed feed = new Feed(service.getImage(ID));
+        return ok(imageInfo.render(feed, service));
     }
 
 }
