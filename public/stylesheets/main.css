@@ -28,9 +28,21 @@
 
 #imageFeed .feed .desc {}
 
+#imageFeed .feed .likes {}
 
+#imageFeed .feed .comments {
+    border-top: 1px solid #000000;
+}
 
+#imageFeed .feed .comments .comment {
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+}
 
+#imageFeed .feed .comments .comment .commenter {
+    font-style: italic;
+}
 
+#imageFeed .feed .comments .comment .theComment {}
 
 

@@ -17,7 +17,14 @@
                 <div class="created">@feed.getCreated()</div>
                 <div class="desc">@feed.getDescription()</div>
                 <div class="likes"></div>
-                <div class="comments"></div>
+                <div class="comments">
+                @for(comment <- feed.getComments()) {
+                    <div class="comment">
+                        <div class="commenter">@comment.getCreatorUsername()</div>
+                        <div class="theComment">@comment.getComment()</div>
+                    </div>
+                }
+                </div>
             </div>
         }
         </div>
