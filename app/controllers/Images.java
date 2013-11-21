@@ -51,6 +51,7 @@ public class Images extends AbstractRustagramController {
         RustagramService service = (RustagramService) ctx.getBean("service");
         int ID = Integer.parseInt(id);
         Feed feed = new Feed(service.getImage(ID));
+        feed.setComments(service.getCommentsOnImage(ID));
         return ok(imageInfo.render(feed, service));
     }
 
