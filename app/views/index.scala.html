@@ -9,10 +9,18 @@
 
         <h3>Good to see you again @{session.get("displayName")}!</h3>
 
+        <div id="imageFeed">
         @for(feed <- feedList) {
-
-            <p>@feed.getId()</p>
+            <div class="feed">
+                <a class="image" href="/imageinfo/@feed.getId()" style="background-image: url('@feed.getUrl()')"></a>
+                <div class="author">@feed.getCreatorDisplayName()</div>
+                <div class="created">@feed.getCreated()</div>
+                <div class="desc">@feed.getDescription()</div>
+                <div class="likes"></div>
+                <div class="comments"></div>
+            </div>
         }
+        </div>
 
     } else {
 

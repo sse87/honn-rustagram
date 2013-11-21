@@ -3,25 +3,28 @@
     border-left: 1px solid #000000;
     border-right: 1px solid #000000;
     margin: 50px auto;
-    padding: 20px;
-    width: 500px;
+    width: 540px;
 }
 
 #imageFeed .feed {
     border-top: 1px solid #000000;
+    padding: 20px;
 }
 
 #imageFeed .feed .image {
     background-position: 50% 50%;
     background-size: cover;
-    height: 250px;
+    display: block;
+    height: 500px;
 }
 
 #imageFeed .feed .author {
     font-style: italic;
 }
 
-#imageFeed .feed .created {}
+#imageFeed .feed .created {
+    float: right;
+}
 
 #imageFeed .feed .desc {}
 
