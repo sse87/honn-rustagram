@@ -73,4 +73,12 @@ public class ImageData extends RuData implements ImageDataGateway
                 "select * from ru_images order by created desc", new ImageRowMapper());
         return images;
     }
+
+    /*@Override
+    public int getImageLikes(int id) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        int totalLikes = (int) jdbcTemplate.query(
+                "SELECT COUNT(*) FROM ru_likes where image_id = " + id, List <int>);
+        return totalLikes;
+    }*/
 }

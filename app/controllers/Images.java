@@ -47,12 +47,28 @@ public class Images extends AbstractRustagramController {
 
         return ok(upload_success.render(image));
     }
-    public static Result showImageInfo(String id){
+
+    public static Result showImageInfo(String strId){
+
         RustagramService service = (RustagramService) ctx.getBean("service");
-        int ID = Integer.parseInt(id);
-        Feed feed = new Feed(service.getImage(ID));
-        feed.setComments(service.getCommentsOnImage(ID));
+
+        int id = Integer.parseInt(strId);
+        Feed feed = new Feed(service.getImage(id));
+
+        feed.setComments(service.getCommentsOnImage(id));
+
         return ok(imageInfo.render(feed));
+    }
+
+    public static Result getTotalLikes(String imageId) {
+
+        RustagramService service = (RustagramService) ctx.getBean("service");
+
+        int id = Integer.parseInt(imageId);
+
+        int totalLikes = service.getLikesOnImage(id);
+
+        return ok(toJson(totalLikes));
     }
 
 }

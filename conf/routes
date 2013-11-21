@@ -14,7 +14,7 @@ GET         /logout              controllers.Users.logout()
 GET         /signup              controllers.Users.showSignupForm()
 POST        /signup              controllers.Users.processSignupForm()
 
-GET         /api/images          controllers.Images.getAllImages()
+GET         /api/image/likes/:id controllers.Images.getTotalLikes(id: String)
 GET         /api/feeds           controllers.Application.getFeeds()
 
 GET         /image/form          controllers.Images.showImageForm()
@@ -22,7 +22,7 @@ POST        /image               controllers.Images.processImageForm()
 
 GET         /imageinfo/:id       controllers.Images.showImageInfo(id: String)
 
-POST        /comment             controllers.Application.AddComment()
+POST        /comment             controllers.Application.addComment()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)
