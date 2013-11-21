@@ -45,4 +45,10 @@ public class Images extends AbstractRustagramController {
 
         return ok(upload_success.render(image));
     }
+    public static Result showImageInfo(){
+        RustagramService service = (RustagramService) ctx.getBean("service");
+        Image img = service.getImage(1);
+        return ok(imageInfo.render(img, service));
+    }
+
 }

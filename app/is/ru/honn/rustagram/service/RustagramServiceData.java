@@ -100,4 +100,14 @@ public class RustagramServiceData implements RustagramService {
   public List<Comment> getCommentsOnImage(int imageId) throws ImageNotFoundException {
     return commentDataGateway.getCommentsOnImage(imageId);
   }
+
+    @Override
+    public Like addLikeOnImage(int imageId, User User) throws ImageNotFoundException {
+        return null;  //TODO
+    }
+
+    @Override
+    public int getLikesOnImage(int imageId) throws ImageNotFoundException {
+        return 0;  //TODO
+    }
 }

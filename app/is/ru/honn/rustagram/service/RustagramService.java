@@ -115,4 +115,8 @@ public interface RustagramService {
      * @throws ImageNotFoundException if no image with the specified ID was found.
      */
     public List<Comment> getCommentsOnImage(int imageId) throws ImageNotFoundException;
+
+    Like addLikeOnImage(int imageId, User User) throws ImageNotFoundException;
+
+    int getLikesOnImage(int imageId) throws ImageNotFoundException;
 }

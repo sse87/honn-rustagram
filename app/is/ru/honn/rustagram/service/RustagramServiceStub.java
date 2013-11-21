@@ -17,6 +17,7 @@ public class RustagramServiceStub implements RustagramService {
   private Map<String, User> users = new HashMap<String, User>();
   private Map<Integer, Image> images = new HashMap<Integer, Image>();
   private Map<Integer, List<Comment>> comments = new HashMap<Integer, List<Comment>>();
+  private Map<User, List<Like>> likes = new HashMap<User, List<Like>>();
 
   /**
    * Construct a service stub with no initial user defined.
@@ -142,6 +143,28 @@ public class RustagramServiceStub implements RustagramService {
     }
     return c;
   }
+
+  @Override
+  public Like addLikeOnImage(int imageId, User User) throws ImageNotFoundException {
+    Image image = getImage(imageId);
+    User user = User;
+    Like like = new Like(user.getUsername() , imageId);
+    if (likes.containsKey(user)) {
+          return like;
+    }
+    else{
+        List<Like> likeList = new ArrayList<Like>();
+        likeList.add(like);
+        likes.put(user, likeList);
+    }
+    return like;
+  }
+
+  @Override
+  public int getLikesOnImage(int imageId) throws ImageNotFoundException {
+     Image image = getImage(imageId); // To verify that the image exists. Will throw exception otherwise.
+     return likes.size();
+    }
 
   @Override
   public List<Comment> getCommentsOnImage(int imageId) throws ImageNotFoundException {
